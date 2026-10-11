@@ -1,0 +1,96 @@
+# ============================================================
+#  Masaüstü Robot v1 - Ayar dosyası
+#  Değiştirdikten sonra programı kapatıp yeniden aç (baslat.bat).
+#  Not: YAML'da girintiler (boşluklar) önemlidir, TAB kullanma.
+# ============================================================
+
+robot_adi: "Şakir"
+
+# ---------- ESP32 seri bağlantı ----------
+serial:
+  port: auto          # auto = otomatik bul. Olmazsa Aygıt Yöneticisi'ndeki portu yaz: "COM5"
+  baud: 921600        # ESP32 firmware ile aynı olmalı
+
+# ---------- Kamera (Logitech C270) ----------
+camera:
+  index: auto         # auto = adında "C270" geçen kamerayı bul. Olmazsa 0, 1, 2 dene
+  name_hint: "C270"
+  width: 640
+  height: 480
+  hfov_deg: 48        # C270 yatay görüş açısı (yaklaşık)
+  show_window: false  # true = kamera görüntüsünü pencerede göster (hata ayıklama için)
+
+# ---------- Yüz takibi / kafa ----------
+tracking:
+  detector: mediapipe     # mediapipe | haar (çok zayıf PC'de haar daha hafif ama kötü)
+  min_confidence: 0.6
+  pan_invert: false       # kafa yüzünden UZAĞA dönüyorsa true yap
+  kp: 0.45                # oransal kazanç: büyütürsen daha hızlı ama salınabilir
+  deadband_deg: 4         # yüz ortaya bu kadar yakınsa kafa kıpırdamaz (titreme önler)
+  max_step_deg: 8         # bir adımda en fazla bu kadar dön
+  smoothing: 0.5          # 0..1, yüz konumu yumuşatma (büyük = daha yumuşak/yavaş)
+  track_speed: 90         # takip ederken servo hızı (derece/sn)
+  scan_after_s: 8         # bu kadar saniye kimse görünmezse yavaşça etrafı tara
+  scan_speed: 25
+  scan_range_deg: 60
+  idle_after_s: 60        # bu kadar saniye kimse yoksa ortaya dön ve dinlen
+  pan_limit_deg: 90
+
+# ---------- Mikrofon / dinleme ----------
+audio_in:
+  device: auto            # auto = adında "C270" geçen mikrofon; yoksa varsayılan mikrofon
+  name_hint: "C270"
+  vad_aggressiveness: 2   # 0..3, gürültülü ortamda 3 yap
+  silence_end_ms: 800     # konuşma bittikten sonra bu kadar sessizlik olunca cümle bitti say
+  min_speech_ms: 500
+  max_speech_s: 15
+  energy_threshold: 500   # webrtcvad yüklenemezse kullanılan basit ses eşiği
+
+# Ne zaman cevap versin?
+conversation:
+  require_wake_word: false          # true = sadece ismini duyunca cevap ver
+  wake_words: ["şakir", "sakir", "robot"]
+  only_when_face_visible: true      # true = kimse görünmüyorsa (ve ismi geçmiyorsa) cevap verme
+  memory_turns: 8                   # hatırlanan son konuşma sayısı
+  notes_file: "notlar.txt"          # kalıcı notlar (robot "bunu unutma" denince buraya yazar)
+
+# ---------- xAI (Grok) API ----------
+# API anahtarı burada DEĞİL, Windows ortam değişkeni XAI_API_KEY içinde durur (KURULUM.md).
+xai:
+  base_url: "https://api.x.ai/v1"
+  model: "grok-4.20-0309-non-reasoning"   # hızlı ve ucuz. Daha zeki ama yavaş: "grok-4.7"
+  max_output_tokens: 300
+  temperature: 0.9
+  web_search: xai          # xai = Grok'un kendi web araması | ddg = DuckDuckGo | off = kapalı
+  stt_model: "grok-voice-transcribe-2.0"
+  language: "tr"
+
+# ---------- Ses çıkışı (konuşma) ----------
+voice:
+  tts_engine: xai          # xai = Grok sesi | edge = Microsoft Edge ücretsiz Türkçe ses
+  xai_voice: "rex"         # örn. eve, ara, rex. Tüm liste: baslat.bat --test çıktısında
+  edge_voice: "tr-TR-AhmetNeural"
+  speed: 1.05              # 0.7 .. 1.5
+  output: robot            # robot = robotun kendi hoparlörü (ESP32) | pc = bilgisayarın hoparlörü
+  robot_volume: 60         # 0..100 (USB güç bütçesi için çok açma)
+
+# ---------- LED çubuğu ----------
+leds:
+  enabled: true
+  brightness: 12           # % (firmware zaten en fazla %20 ile sınırlar)
+
+# ---------- Karakter (persona) ----------
+# İstediğin gibi değiştir. Robot bu talimata göre konuşur.
+persona: |
+  Sen Şakir'sin: masanın üstünde duran, kafası sağa sola dönen, gözleri ekran olan
+  küçük bir robotsun. Sahibin Batuhan. Batuhan'ın kankasısın.
+  Tarzın: İstanbul ağzıyla, samimi, argo, esprili, hazırcevap ve küfürbaz.
+  Küfür etmekten çekinme; kankalar arasındaki gibi doğal ve komik olsun.
+  Batuhan'ın arkadaşlarıyla dalga geç, onlara laf sok, şakadan ayar ver.
+  Sınır: Bu sadece şaka ve muhabbet. Gerçekten tehdit etme, nefret söylemi yapma,
+  kimseyi ırkı, dini, engeli gibi şeylerle aşağılama, çocuklara küfür etme.
+  Cevapların KISA olsun: genelde 1-2 cümle, en fazla 3. Sesli okunacak, o yüzden
+  emoji, madde işareti, link, markdown kullanma. Sayıları ve kısaltmaları okunur yaz.
+  Arada [laugh] yazarak gülebilirsin.
+  Cevabın EN BAŞINA ruh halini yaz: [[mutlu]], [[kizgin]] veya [[normal]].
+  Güncel bilgi (hava, döviz, haber, maç, vs.) sorulursa araçları kullan, uydurma.

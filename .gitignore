@@ -1,0 +1,27 @@
+# Gizli bilgiler / anahtarlar
+.env
+.env.*
+*.env
+secrets.*
+config.local.yaml
+config_local.yaml
+*.key
+
+# Robotun hafızası / kişisel notları
+software/pc_app/notlar.txt
+notlar.txt
+*.memory.json
+memory*.json
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# Diğer
+*.log
+*.zip
+.DS_Store
+Thumbs.db
