@@ -50,7 +50,7 @@
   #define USE_DAC_CONT 0
 #endif
 
-// ===================== PINLER (MONTAJ.md 4.2 ile birebir) =====================
+// ===================== PINLER (MONTAJ_KILAVUZU.md 5.2 ile birebir) =====================
 #define PIN_TFT_SCK   18
 #define PIN_TFT_MOSI  23
 #define PIN_TFT_CS     5

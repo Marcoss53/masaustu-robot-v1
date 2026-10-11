@@ -9,26 +9,26 @@ Beyin Windows PC; robotun içinde kamera+mikrofon (C270), ESP32 (ekran, servo, h
 
 Genel: PLA, 0,4 nozül, 0,2 mm katman, 3 duvar, üst/alt 5 katman, %15 gyroid dolgu. M3 vidaların gireceği kılavuz delikler (Ø2,6) için duvar sayısı 4 daha iyi olur.
 
-| Dosya (stl/) | Renk | Tablaya yatış (dosyada hazır) | Destek | Not |
+| Dosya (3d_parcalar/) | Renk | Tablaya yatış (dosyada hazır) | Destek | Not |
 |---|---|---|---|---|
-| head_front.stl (v2) | Beyaz | Bölme yüzü (düz kesit) tablada, yüz yukarı | **Gerekli: ağaç (tree) destek, sadece tabladan (build plate only)** | Kubbenin iç tavanı için. Destekler içten çıkar. |
-| head_back.stl | Beyaz | Bölme yüzü tablada | **Gerekli: ağaç destek, içe** | Aynı sebep. Arkadaki havalandırma yarıkları desteksiz. |
-| body_shell.stl | Beyaz | Ters (tavan tablada) | Yok | Üst kenar 45° pahlı, desteksiz basılır. |
-| pedestal.stl | Beyaz | Ters (güverte tablada) | Yok | LED yarığı yatay köprü, sorun olmaz. Arkadaki 2 kablo çentiği alttan açık, baskıda üstte kalır, desteksiz. |
-| base_plate.stl | Gri/herhangi | Düz | Yok | Bileşen tablası + ağırlık kabı + 2 kablo ankrajı. |
-| neck_hub.stl | Gri/beyaz | Üst yüz tablada | Yok | Servo kolu cebi yukarı bakar. |
-| visor.stl | **Siyah** | Düz | Yok | %100 dolgu. Parlak siyah PLA veya smoke PETG daha şık durur. |
-| display_bracket.stl | Gri | Arka yüz tablada | Yok (gerekirse "sadece tabla") | |
-| camera_bracket.stl | Gri | Arka yüz tablada | Yok (gerekirse "sadece tabla") | |
+| 5_kafa_on.stl (v2) | Beyaz | Bölme yüzü (düz kesit) tablada, yüz yukarı | **Gerekli: ağaç (tree) destek, sadece tabladan (build plate only)** | Kubbenin iç tavanı için. Destekler içten çıkar. |
+| 6_kafa_arka.stl | Beyaz | Bölme yüzü tablada | **Gerekli: ağaç destek, içe** | Aynı sebep. Arkadaki havalandırma yarıkları desteksiz. |
+| 3_govde.stl | Beyaz | Ters (tavan tablada) | Yok | Üst kenar 45° pahlı, desteksiz basılır. |
+| 2_kaide.stl | Beyaz | Ters (güverte tablada) | Yok | LED yarığı yatay köprü, sorun olmaz. Arkadaki 2 kablo çentiği alttan açık, baskıda üstte kalır, desteksiz. |
+| 1_taban_plakasi.stl | Gri/herhangi | Düz | Yok | Bileşen tablası + ağırlık kabı + 2 kablo ankrajı. |
+| 4_boyun.stl | Gri/beyaz | Üst yüz tablada | Yok | Servo kolu cebi yukarı bakar. |
+| 9_vizor_siyah.stl | **Siyah** | Düz | Yok | %100 dolgu. Parlak siyah PLA veya smoke PETG daha şık durur. |
+| 7_ekran_braketi.stl | Gri | Arka yüz tablada | Yok (gerekirse "sadece tabla") | |
+| 8_kamera_braketi.stl | Gri | Arka yüz tablada | Yok (gerekirse "sadece tabla") | |
 
-`desk_robot_v1.3mf` tüm parçaları tek dosyada yan yana içerir (toplu bakış için). En temiz sonuç için beyaz parçaları bir plakada, siyah vizörü ayrı bastır.
+`tum_parcalar.3mf` tüm parçaları tek dosyada yan yana içerir (toplu bakış için). En temiz sonuç için beyaz parçaları bir plakada, siyah vizörü ayrı bastır.
 
 Boyutlar (baskı yönünde, mm):
-pedestal 114x114x16 · base_plate 110x110x26,4 · body_shell 88x74x58,4 · neck_hub 52x52x10 · head_front 109x77x38 · head_back 109x77x44 · visor 61,4x35,4x1,6 · display_bracket 76x38x10,5 · camera_bracket 31x67,7x8,5
+2_kaide 114x114x16 · 1_taban_plakasi 110x110x26,4 · 3_govde 88x74x58,4 · 4_boyun 52x52x10 · 5_kafa_on 109x77x38 · 6_kafa_arka 109x77x44 · 9_vizor_siyah 61,4x35,4x1,6 · 7_ekran_braketi 76x38x10,5 · 8_kamera_braketi 31x67,7x8,5
 
 ## 2. Hazırlık
 
-1. **M3 kılavuz delikleri (insert yok):** Pirinç insert kullanılmıyor. body_shell (4 kolon altı), neck_hub (üstte 4) ve head_front (bölme yüzünde 4, arka kapak) delikleri Ø2,6 mm; M3 vidayı doğrudan deliğe yavaşça vidala, fazla sıkma; çok sökülürse yalama olur. Geçiş delikleri (diğer tarafta) ~Ø3,4 mm, değişmedi.
+1. **M3 kılavuz delikleri (insert yok):** Pirinç insert kullanılmıyor. 3_govde (4 kolon altı), 4_boyun (üstte 4) ve 5_kafa_on (bölme yüzünde 4, arka kapak) delikleri Ø2,6 mm; M3 vidayı doğrudan deliğe yavaşça vidala, fazla sıkma; çok sökülürse yalama olur. Geçiş delikleri (diğer tarafta) ~Ø3,4 mm, değişmedi.
 2. **C270'i sök:** ön kapağı kaldır, vidaları sök, kartı çıkar. Mikrofon kartın üzerinde, onu koru. Kablosu **kesilmez**, kendi USB fişiyle PC'ye gider. Not: kasayı açınca garanti biter.
 3. **Servoyu ortala:** ESP32'ye bağlayıp 90°'ye (1500 µs) getir. Kolu bu konumda takacağız; yazılımda açı 0..180 yerine **0..180 (merkez 90) ve kafa için ±90** ile sınırla.
 
@@ -37,7 +37,7 @@ pedestal 114x114x16 · base_plate 110x110x26,4 · body_shell 88x74x58,4 · neck_
 | Yer | Vida | Not |
 |---|---|---|
 | Taban → gövde kolonları | 4× M3×18 (veya M3×20) | Alttan, Ø2,6 kılavuz |
-| Kafa ön → neck_hub | 4× M3×8 (M3×10 da olur) | İçeriden, Ø2,6 kılavuz |
+| Kafa ön → 4_boyun | 4× M3×8 (M3×10 da olur) | İçeriden, Ø2,6 kılavuz |
 | Kafa arka kapak → ön | 4× M3×12 | Dışarıdan geçiş + ön kılavuz |
 | Ekran braketi (v2) | 2× M3×10 | Arkadan, braket kulağından ön duvardaki kolonlara self-tap |
 | Kamera braketi → kafa | 2× M3×18 | Braket tarafı zaten self-tap |
@@ -45,22 +45,25 @@ pedestal 114x114x16 · base_plate 110x110x26,4 · body_shell 88x74x58,4 · neck_
 ## 4. Montaj sırası
 
 1. **Servo:** Gövde ters dururken servoyu alttan tavandaki deliğe sok (mil yukarı, gövdesi arkaya doğru). Tabları 2 servo vidası (M2) ile tavandaki ayaklara vida.
-2. **Göbek:** Çift kollu servo kolunu (horn) neck_hub'ın alttaki cebine yerleştir, kutudan çıkan küçük vidalarla alttan göbeğe sabitle. Göbek+kolu milin üstüne kafa önü (kablo deliği) öne bakacak şekilde bas, ortadaki Ø7 delikten servo merkez vidasını sık.
-3. **Kafa ön yarısı:** Ekran ve kamera kablolarını göbekteki kablo deliğinden ve gövde tavanındaki yay şeklindeki kanaldan aşağı sarkıt. head_front'u göbeğe **içeriden 4x M3x8** ile vida (kamera braketini takmadan önce, yoksa vidalara ulaşılmaz).
-4. **Vizör + ekran:** Siyah vizörü önden cebine yapıştır (birkaç nokta CA/sıcak silikon). Ekranı ekran yüzü öne gelecek şekilde vizörün arkasına koy, ekranı display_bracket'e oturt ve ikisini birlikte kafanın açık arkasından düz it (zorlamadan girer, her yanda ≥0,6 mm boşluk); **2x M3x10** vidayı braket kulaklarından ön duvardaki kısa kolonlara sık (v2). Ekran kablosu braketin alt çentiğinden çıkar.
-5. **Kamera:** C270 kartını lens öne gelecek şekilde camera_bracket raylarına koy (lens kafadaki deliğe oturur), yan dudakların üstünden **4x M2x6 + pul** ile kıskaçla. Braketi **2x M3x18** ile kafadaki kolonlara vida (bölme yüzü tarafından).
-6. **Kafayı kapat:** Kablolarda 6-8 cm **servis halkası** bırak (±90° dönüş için). head_back'i takıp dışarıdan **4x M3x12** ile kapat.
+2. **Göbek:** Çift kollu servo kolunu (horn) 4_boyun parçasının alttaki cebine yerleştir, kutudan çıkan küçük vidalarla alttan göbeğe sabitle. Göbek+kolu milin üstüne kafa önü (kablo deliği) öne bakacak şekilde bas, ortadaki Ø7 delikten servo merkez vidasını sık.
+3. **Kafa ön yarısı:** Ekran ve kamera kablolarını göbekteki kablo deliğinden ve gövde tavanındaki yay şeklindeki kanaldan aşağı sarkıt. 5_kafa_on parçasını göbeğe **içeriden 4x M3x8** ile vida (kamera braketini takmadan önce, yoksa vidalara ulaşılmaz).
+4. **Vizör + ekran:** Siyah vizörü önden cebine yapıştır (birkaç nokta CA/sıcak silikon). Ekranı ekran yüzü öne gelecek şekilde vizörün arkasına koy, ekranı 7_ekran_braketi parçasına oturt ve ikisini birlikte kafanın açık arkasından düz it (zorlamadan girer, her yanda ≥0,6 mm boşluk); **2x M3x10** vidayı braket kulaklarından ön duvardaki kısa kolonlara sık (v2). Ekran kablosu braketin alt çentiğinden çıkar.
+5. **Kamera:** C270 kartını lens öne gelecek şekilde 8_kamera_braketi raylarına koy (lens kafadaki deliğe oturur), yan dudakların üstünden **4x M2x6 + pul** ile kıskaçla. Braketi **2x M3x18** ile kafadaki kolonlara vida (bölme yüzü tarafından).
+6. **Kafayı kapat:** Kablolarda 6-8 cm **servis halkası** bırak (±90° dönüş için). 6_kafa_arka parçasını takıp dışarıdan **4x M3x12** ile kapat.
 7. **Gövde içi:** Hoparlörü ön duvardaki halkaya sıcak silikonla otur (ızgaranın arkası).
-8. **Taban plakası (base_plate):**
-   - **Kablo çıkışları:** Arkadan bakınca sol çentik C270, sağ çentik ESP32 kablosu içindir (çentikler pedestal'ın alt kenarında, alttan açık). Kabloyu plakanın üstünden geçirip arka kenara getir, yanındaki küçük ankraj bloğunun tünelinden cırt kelepçe geçirip kabloyu ankraja sıkıca bağla (dışarıdan çekilince içerideki fiş/lehim zorlanmasın). İçeride 3-4 cm boşluk bırak.
+8. **Taban plakası (1_taban_plakasi):**
+   - **Kablo çıkışları:** Arkadan bakınca sol çentik C270, sağ çentik ESP32 kablosu içindir (çentikler 2_kaide parçasının alt kenarında, alttan açık). Kabloyu plakanın üstünden geçirip arka kenara getir, yanındaki küçük ankraj bloğunun tünelinden cırt kelepçe geçirip kabloyu ankraja sıkıca bağla (dışarıdan çekilince içerideki fiş/lehim zorlanmasın). İçeride 3-4 cm boşluk bırak.
    - ESP32 kablosu **90° açılı micro-USB** olmalı; takınca kablo aşağı dönüp güverte açıklığından plakaya iner. Düz fiş gövde duvarına dayanır (~18 mm boşluk).
    - ESP32.yi (pinler aşağı, micro-USB ucu önden bakınca sağ tarafa) iki ince duvarın üstüne yatır, ortadaki yuvadan cırt kelepçe ile bağla. Dupont kablolar kartın altından çıkar.
    - PAM8403 amfiyi sol tepsiye (v2 cep 22,2x20,2 mm; pedler X uçlarında, kablo çentikleri iki uçta) koy, altına çift taraflı bant; LED çubuğunu öndeki iki rayın arasına (LED'ler öne bakacak) koy; sıcak silikonla sabitle.
    - Ön ağırlık kabını somun/bilye ile doldur (40-70 g) ve üstünü bantla kapat. Bu, kafayı çevirirken devrilmeyi önler.
-9. **Kablolama:** Aşağıdaki tabloya göre bağla. Test et (bölüm 7) ve sonra kapat.
-10. **Kapatma:** Kaide halkasını (pedestal) taban plakasının üstüne geçir (plaka halkanın altındaki yuvaya oturur); geçirirken iki kabloyu arkadaki çentiklere yukarıdan yatır, sıkışmasın, gövdeyi güverteye oturt (alt dudak güverte açıklığına girer). **4x M3x18** (M3x20 daha iyi tutunur) vidayı alttan taban plakasının burçlarından geçirip gövde kolonlarındaki Ø2,6 kılavuz deliklere yavaşça vidala, fazla sıkma. 4 lastik ayağı alttaki yuvalara yapıştır.
+9. **Kablolama:** Aşağıdaki tabloya ve `gorseller/baglanti_semasi.png` şemasına göre bağla. Kablo yolu için `gorseller/kablo_yolu.png`. Test et (bölüm 7) ve sonra kapat.
+10. **Kapatma:** Kaide halkasını (2_kaide) taban plakasının üstüne geçir (plaka halkanın altındaki yuvaya oturur); geçirirken iki kabloyu arkadaki çentiklere yukarıdan yatır, sıkışmasın, gövdeyi güverteye oturt (alt dudak güverte açıklığına girer). **4x M3x18** (M3x20 daha iyi tutunur) vidayı alttan taban plakasının burçlarından geçirip gövde kolonlarındaki Ø2,6 kılavuz deliklere yavaşça vidala, fazla sıkma. 4 lastik ayağı alttaki yuvalara yapıştır.
 
 ## 5. Bağlantı şeması
+
+![Kablo yolu](gorseller/kablo_yolu.png)
+
 
 ### 5.1 USB (2 ayrı kablo, hub yok)
 
@@ -73,6 +76,9 @@ PC USB portu B (USB 3.x, mavi/SS)  <── ESP32 micro-USB data kablosu (90° a�
 Lehim yok. ESP32 kablosu mutlaka **data** kablosu olmalı (sadece şarj kablosunda COM port görünmez).
 
 ### 5.2 ESP32 pinleri (30 pin DevKit)
+
+![Bağlantı şeması](gorseller/baglanti_semasi.png)
+
 
 | ESP32 pini | Bağlandığı yer | Not |
 |---|---|---|
@@ -145,7 +151,7 @@ Sonuç: Kamera ayrı porta geçtiği için ESP32 portunun yükü hafifledi. USB 
 
 ## 8. Bilinen riskler / doğrulanmamış noktalar
 
-- Model **basılıp denenmedi**; ölçüler ürün sayfası/çizimlerine göre. İlk baskıdan sonra ekran ve kamera oturuşunu kontrol et (parametreler `desk_robot_v1.scad` başında).
+- Model **basılıp denenmedi**; ölçüler ürün sayfası/çizimlerine göre. İlk baskıdan sonra ekran ve kamera oturuşunu kontrol et (parametreler `robot_model.scad` başında).
 - 2" ekranın aktif alanının PCB üzerindeki kaçıklığı bilinmiyor; pencere 42x32 mm, gerekirse `win_w/win_h` ya da vizör konumunu düzelt.
 - C270 kart ölçüsü (≈21-23,5 x 58 mm, lens ekseni uçtan 13 mm) topluluk ölçümünden; parti farkı olabilir.
 - Kablo çentikleri 5 mm genişliğinde (C270 ve çoğu USB kablosu 3-4,5 mm). Kablon kalınsa `cab_w` değerini büyüt; inceyse kablo ankraja bağlı olduğu için sorun olmaz.

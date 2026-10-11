@@ -1,4 +1,5 @@
-from parts import PARTS
+import os; os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))  # proje kök klasörü
+from parca_verisi import PARTS
 def tl(x): 
     s=f"{x:,.2f}".replace(",","X").replace(".",",").replace("X",".")
     return s

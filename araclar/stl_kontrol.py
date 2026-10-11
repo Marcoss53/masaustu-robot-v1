@@ -1,5 +1,6 @@
+import os; os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))  # proje kök klasörü
 import trimesh,glob,os
-for f in sorted(glob.glob('stl/*.stl')):
+for f in sorted(glob.glob('3d_parcalar/*.stl')):
     m=trimesh.load(f)
     b=m.bounds; e=b[1]-b[0]
     parts=m.split(only_watertight=False)

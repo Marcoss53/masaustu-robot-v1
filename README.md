@@ -4,17 +4,47 @@ Masanın üstünde duran, kafası sağa-sola dönen, gözleri ekran olan, seni k
 
 > **English summary:** A 3D-printed desktop companion robot. A Windows PC runs face tracking (MediaPipe, Logitech C270) and voice chat with xAI Grok (speech-to-text, LLM, TTS); an ESP32 drives a 2" ST7789 "eyes" display, an MG90S head-pan servo and a speaker through a PAM8403 amp fed by the ESP32's internal DAC (GPIO25), all over a single USB serial link (921600 baud). No USB hub: the camera and ESP32 use two separate USB cables. Parametric OpenSCAD source, ready STLs/3MF, Arduino firmware and the Python app are included. Docs are in Turkish. MIT licensed.
 
-![Montajlı görünüm](render/assembly_34.png)
+![Montajlı görünüm](gorseller/robot_on_gorunum.png)
 
 | Patlatılmış görünüm | Kafa +90° | Arka |
 |---|---|---|
-| ![exploded](render/exploded.png) | ![pan](render/pan_plus90.png) | ![back](render/back_34.png) |
+| ![parçalar ayrık](gorseller/parcalar_ayrik.png) | ![kafa 90 derece](gorseller/kafa_90_derece.png) | ![arka](gorseller/robot_arka_gorunum.png) |
 
-| Gövde v2 | Kafa ön v2 (iç) |
+| Gövde | Kafa önü (iç) |
 |---|---|
-| ![body_shell_v2](render/body_shell_v2.png) | ![head_front_v2](render/head_front_v2_ic.png) |
+| ![gövde](gorseller/govde.png) | ![kafa önü iç](gorseller/kafa_on_ic.png) |
 
 > Görseller OpenSCAD render'ıdır.
+
+## Dosyalar ne işe yarar?
+
+| Dosya / klasör | Ne |
+|---|---|
+| `3d_parcalar/` | Basılacak 9 parça (STL), baskı yönünde hazır. Numara = alttan üste sıra |
+| `tum_parcalar.3mf` | Bütün parçalar tek dosyada (toplu bakış) |
+| `yeni_3parca_tek_tabla.3mf` | Yenilenen 3 parça (gövde, kafa önü, ekran braketi) tek tablada |
+| `robot_model.scad` | OpenSCAD parametrik model (bütün parçaların kaynağı) |
+| `MONTAJ_KILAVUZU.md` | Baskı ayarları, montaj sırası, bağlantılar, test listesi |
+| `PARCA_LISTESI.md` / `parca_listesi.pdf` | Satın alınacak parçalar, link ve fiyatlar |
+| `gorseller/` | Render'lar, bağlantı şeması ve kablo yolu çizimi |
+| `yazilim/KURULUM.md` | Yazılım kurulumu adım adım |
+| `yazilim/esp32_kodu/robot_kodu/` | ESP32'ye yüklenecek Arduino kodu (`robot_kodu.ino`) |
+| `yazilim/pc_panel/` | PC programı: `panel_baslat.bat` ile açılır |
+| `araclar/` | Geliştirici betikleri (STL üretme/kontrol, parça listesi, şema çizimi). Robotu kullanmak için gerekmez |
+
+### STL parçaları
+
+| Dosya | Parça |
+|---|---|
+| `1_taban_plakasi.stl` | En alttaki plaka (ESP32, amfi, ağırlık kabı) |
+| `2_kaide.stl` | Yuvarlak kaide halkası |
+| `3_govde.stl` | Gövde kutusu (servo, hoparlör) |
+| `4_boyun.stl` | Servoya takılan boyun göbeği |
+| `5_kafa_on.stl` | Kafanın ön yarısı |
+| `6_kafa_arka.stl` | Kafanın arka kapağı |
+| `7_ekran_braketi.stl` | Ekranı tutan braket |
+| `8_kamera_braketi.stl` | Kamera kartını tutan braket |
+| `9_vizor_siyah.stl` | Ekranın önündeki siyah çerçeve (siyah PLA) |
 
 ## Özellikler
 
@@ -50,23 +80,27 @@ Küçük malzemeler: micro-USB **data** kablosu (≥1,5 m, **90° açılı fiş*
 
 Bambu Lab A2L ile hazırlandı. Genel: PLA, 0,4 nozül, 0,2 mm katman, 3 duvar (vida delikleri için 4 daha iyi), üst/alt 5 katman, %15 gyroid dolgu. STL'ler baskı yönünde hazır.
 
-| Dosya (`stl/`) | Renk | Yön | Destek |
+| Dosya (`3d_parcalar/`) | Renk | Yön | Destek |
 |---|---|---|---|
-| `body_shell.stl` (v2) | Beyaz | **Ters** (tavan tablada) | **Yok** |
-| `head_front.stl` (v2) | Beyaz | Bölme yüzü tablada | **Ağaç (tree) destek, sadece tabladan (build plate only)** |
-| `head_back.stl` | Beyaz | Bölme yüzü tablada | Ağaç destek, içe |
-| `display_bracket.stl` (v2) | Gri/herhangi | Arka yüz tablada | **Yok** |
-| `visor.stl` | **Siyah PLA** | Düz | Yok (%100 dolgu) |
-| `pedestal.stl` | Beyaz | Ters | Yok |
-| `base_plate.stl` | Gri/herhangi | Düz | Yok (amfi cebi büyütülmüş sürüm) |
-| `neck_hub.stl` | Gri/beyaz | Üst yüz tablada | Yok |
-| `camera_bracket.stl` | Gri/herhangi | Arka yüz tablada | Yok |
+| `3_govde.stl` | Beyaz | **Ters** (tavan tablada) | **Yok** |
+| `5_kafa_on.stl` | Beyaz | Bölme yüzü tablada | **Ağaç (tree) destek, sadece tabladan (build plate only)** |
+| `6_kafa_arka.stl` | Beyaz | Bölme yüzü tablada | Ağaç destek, içe |
+| `7_ekran_braketi.stl` | Gri/herhangi | Arka yüz tablada | **Yok** |
+| `9_vizor_siyah.stl` | **Siyah PLA** | Düz | Yok (%100 dolgu) |
+| `2_kaide.stl` | Beyaz | Ters | Yok |
+| `1_taban_plakasi.stl` | Gri/herhangi | Düz | Yok (amfi cebi büyütülmüş sürüm) |
+| `4_boyun.stl` | Gri/beyaz | Üst yüz tablada | Yok |
+| `8_kamera_braketi.stl` | Gri/herhangi | Arka yüz tablada | Yok |
 
-- `robot_3parca_v2.3mf`: v2 parçaları (head_front, body_shell, display_bracket) tek tablaya dizilmiş hâli.
-- `desk_robot_v1.3mf`: bütün parçalar tek dosyada (toplu bakış için).
-- Model parametrik: `desk_robot_v1.scad` (OpenSCAD). Tüm STL ve render'ları yeniden üretmek için `make_all.sh`.
+- `yeni_3parca_tek_tabla.3mf`: yenilenen 3 parça (5_kafa_on, 3_govde, 7_ekran_braketi) tek tablaya dizilmiş hâli.
+- `tum_parcalar.3mf`: bütün parçalar tek dosyada (toplu bakış için).
+- Model parametrik: `robot_model.scad` (OpenSCAD). Tüm STL ve render'ları yeniden üretmek için `araclar/hepsini_uret.sh`.
 
 ## Bağlantı özeti
+
+![Bağlantı şeması](gorseller/baglanti_semasi.png)
+
+![Kablo yolu](gorseller/kablo_yolu.png)
 
 **USB:** C270 kendi kablosuyla PC'ye; ESP32 micro-USB data kablosuyla PC'nin USB 3 portuna. Servo ve amfi ESP32'nin VIN (5 V) pininden beslenir.
 
@@ -91,38 +125,37 @@ ESP32 GPIO25 ──[10 kΩ]──┬── PAM8403 L-IN        PAM8403 L+/L− �
 1000 µF: servonun 5V-GND uçlarına, + ucuna dikkat
 ```
 
-Bölücü kullanırsan firmware'de `DAC_SWING` 120, kullanmazsan 48 (varsayılan). Ayrıntılar ve montaj sırası: [MONTAJ.md](MONTAJ.md).
+Bölücü kullanırsan firmware'de `DAC_SWING` 120, kullanmazsan 48 (varsayılan). Ayrıntılar ve montaj sırası: [MONTAJ_KILAVUZU.md](MONTAJ_KILAVUZU.md).
 
 ## Yazılım kurulumu
 
-Ayrıntılı adımlar: [software/KURULUM.md](software/KURULUM.md).
+Ayrıntılı adımlar: [yazilim/KURULUM.md](yazilim/KURULUM.md).
 
-1. **ESP32 firmware:** Arduino IDE 2 + "esp32 by Espressif" kart paketi. Kütüphaneler: `ESP32Servo`, `Adafruit ST7735 and ST7789 Library`, `Adafruit GFX`, `Adafruit NeoPixel`. `software/esp32_firmware/desk_robot_fw/desk_robot_fw.ino`'yu aç, kart **ESP32 Dev Module**, portu seç, yükle (gerekirse BOOT'a basılı tut). Sonra Arduino IDE'yi kapat.
+1. **ESP32 firmware:** Arduino IDE 2 + "esp32 by Espressif" kart paketi. Kütüphaneler: `ESP32Servo`, `Adafruit ST7735 and ST7789 Library`, `Adafruit GFX`, `Adafruit NeoPixel`. `yazilim/esp32_kodu/robot_kodu/robot_kodu.ino`'yu aç, kart **ESP32 Dev Module**, portu seç, yükle (gerekirse BOOT'a basılı tut). Sonra Arduino IDE'yi kapat.
 2. **Python 3.11** (64-bit, "Add to PATH" işaretli). 3.13 kullanma (MediaPipe desteklemiyor).
 3. **Grok API anahtarı:** [console.x.ai](https://console.x.ai)'den anahtar al, Windows'a ortam değişkeni olarak kaydet:
    ```
    setx XAI_API_KEY "xai-BURAYA-ANAHTARIN"
    ```
    Anahtarı `config.yaml`'a veya depoya **yazma**.
-4. **Çalıştır:** `software/pc_app/panel_baslat.bat` (kontrol paneli) ya da `baslat.bat`. İlk açılışta sanal ortamı kurar ve paketleri indirir.
-5. Ayarlar (karakter, ses, takip hassasiyeti, model): `software/pc_app/config.yaml`.
+4. **Çalıştır:** `yazilim/pc_panel/panel_baslat.bat` (kontrol paneli) ya da `baslat.bat`. İlk açılışta sanal ortamı kurar ve paketleri indirir.
+5. Ayarlar (karakter, ses, takip hassasiyeti, model): `yazilim/pc_panel/config.yaml`.
 
 ## Klasör yapısı
 
 ```
-├── desk_robot_v1.scad        # OpenSCAD parametrik model (tüm parçalar)
-├── stl/                      # Basılacak parçalar (baskı yönünde)
-├── robot_3parca_v2.3mf       # v2 parçaları tek tabla
-├── desk_robot_v1.3mf         # Tüm parçalar tek dosya
-├── render/                   # Render görselleri
-├── MONTAJ.md                 # Baskı, montaj, bağlantı şeması, test listesi
+├── 3d_parcalar/                # 9 STL (1_taban_plakasi ... 9_vizor_siyah)
+├── tum_parcalar.3mf            # Tüm parçalar tek dosya
+├── yeni_3parca_tek_tabla.3mf   # Yenilenen 3 parça tek tabla
+├── robot_model.scad            # OpenSCAD parametrik model
+├── gorseller/                  # Render'lar, baglanti_semasi.png, kablo_yolu.png
+├── MONTAJ_KILAVUZU.md          # Baskı, montaj, bağlantı, test listesi
 ├── PARCA_LISTESI.md / parca_listesi.pdf
-├── make_all.sh, check.py     # STL/render üretimi ve kontrol
-├── parts.py, gen_docs.py, write3mf.py   # Parça listesi / 3MF üretim betikleri
-└── software/
+├── araclar/                    # Geliştirici betikleri (hepsini_uret.sh, stl_kontrol.py, ...)
+└── yazilim/
     ├── KURULUM.md
-    ├── esp32_firmware/desk_robot_fw/   # Arduino firmware (.ino + eye_types.h)
-    └── pc_app/                         # Python uygulaması (panel, takip, ses, Grok)
+    ├── esp32_kodu/robot_kodu/  # Arduino kodu (robot_kodu.ino + eye_types.h)
+    └── pc_panel/               # PC programı (panel_baslat.bat, baslat.bat, config.yaml)
 ```
 
 ## Notlar

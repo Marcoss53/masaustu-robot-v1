@@ -10,9 +10,9 @@
   - Adafruit NeoPixel
 - TFT_eSPI KULLANILMIYOR, User_Setup ayarı gerekmez.
 
-Klasör: `desk_robot_fw/` (içinde `desk_robot_fw.ino` ve `eye_types.h`). İkisi aynı klasörde durmalı.
+Klasör: `robot_kodu/` (içinde `robot_kodu.ino` ve `eye_types.h`). İkisi aynı klasörde durmalı.
 
-Ayarlar `desk_robot_fw.ino` dosyasının başında:
+Ayarlar `robot_kodu.ino` dosyasının başında:
 - `TFT_ROTATION` (görüntü baş aşağıysa 1 yerine 3)
 - `TFT_INVERT` (renkler negatif görünüyorsa false)
 - `SERVO_INVERT`, `PAN_TRIM_DEG` (servo yönü / orta ayarı)

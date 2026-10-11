@@ -46,7 +46,7 @@ try:
     from robot import LED_STATES, Robot, load_config
 except Exception:
     import traceback
-    _fatal(traceback.format_exc() + "\nPaketler eksik olabilir: pc_app\\.venv klasörünü silip panel_baslat.bat'ı tekrar çalıştır.")
+    _fatal(traceback.format_exc() + "\nPaketler eksik olabilir: pc_panel\\.venv klasörünü silip panel_baslat.bat'ı tekrar çalıştır.")
     sys.exit(1)
 
 log = logging.getLogger("panel")

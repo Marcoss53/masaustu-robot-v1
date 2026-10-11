@@ -1,8 +1,8 @@
 # Masaüstü Robot v1 - Yazılım Kurulumu
 
 İki parça var:
-- **esp32_firmware/**: ESP32'ye bir kez yüklenir (servo, göz ekranı, hoparlör, LED).
-- **pc_app/**: PC'de çalışan beyin (yüz takibi, dinleme, Grok ile konuşma).
+- **esp32_kodu/**: ESP32'ye bir kez yüklenir (servo, göz ekranı, hoparlör, LED).
+- **pc_panel/**: PC'de çalışan beyin (yüz takibi, dinleme, Grok ile konuşma).
 
 ---
 
@@ -17,7 +17,7 @@
    - `Adafruit ST7735 and ST7789 Library` (sorarsa "Install all" de, GFX ve BusIO da gelir)
    - `Adafruit NeoPixel`
    (TFT_eSPI kullanılmıyor, User_Setup ayarı yok.)
-4. `esp32_firmware/desk_robot_fw/desk_robot_fw.ino` dosyasını aç (aynı klasördeki `eye_types.h` de otomatik açılır).
+4. `esp32_kodu/robot_kodu/robot_kodu.ino` dosyasını aç (aynı klasördeki `eye_types.h` de otomatik açılır).
 5. Araçlar menüsü: **Kart: ESP32 Dev Module**, **Port:** robot takılıyken çıkan COM portu.
    - Port görünmüyorsa USB sürücüsü eksik: kartın üstündeki çipe göre **CP210x** (Silicon Labs) ya da **CH340** sürücüsünü kur.
 6. **Yükle** (sağ ok) butonuna bas. "Connecting...." yazısında takılırsa ESP32 üzerindeki **BOOT** tuşuna 2 saniye basılı tut.
@@ -54,9 +54,9 @@ Anahtarı kimseyle paylaşma, config.yaml'a da yazma.
 ## Adım 4 - Programı çalıştır
 
 1. Robotu PC'nin **mavi USB 3 portuna** tak.
-2. `pc_app` klasöründe **`baslat.bat`**'a çift tıkla.
+2. `pc_panel` klasöründe **`baslat.bat`**'a çift tıkla.
    - İlk seferde sanal ortam kurar ve paketleri indirir (5-10 dk sürebilir). Sonraki açılışlar hızlıdır.
-3. Önce test yap: `pc_app` klasöründe adres çubuğuna `cmd` yazıp Enter, sonra:
+3. Önce test yap: `pc_panel` klasöründe adres çubuğuna `cmd` yazıp Enter, sonra:
    ```
    baslat.bat --test
    ```
@@ -68,13 +68,13 @@ Anahtarı kimseyle paylaşma, config.yaml'a da yazma.
 mavi = boşta, yeşil = dinliyor, mor = düşünüyor, turkuaz = konuşuyor, kırmızı = hata.
 
 ### Windows açılınca otomatik başlasın
-`pc_app\otomatik_baslat_kur.bat`'a bir kez çift tıkla. Kaldırmak için ekranda yazan dosyayı sil.
+`pc_panel\otomatik_baslat_kur.bat`'a bir kez çift tıkla. Kaldırmak için ekranda yazan dosyayı sil.
 
 ---
 
 ## Kontrol paneli (önerilen)
 
-`pc_app` klasöründe **`panel_baslat.bat`**'a çift tıkla. İlk seferde eksik paketleri kurar (birkaç dakika), sonra siyah pencere olmadan panel açılır. Masaüstüne kısayol istersen `panel_baslat.bat`'a sağ tık > Gönder > Masaüstü (kısayol oluştur).
+`pc_panel` klasöründe **`panel_baslat.bat`**'a çift tıkla. İlk seferde eksik paketleri kurar (birkaç dakika), sonra siyah pencere olmadan panel açılır. Masaüstüne kısayol istersen `panel_baslat.bat`'a sağ tık > Gönder > Masaüstü (kısayol oluştur).
 
 | Sekme | Ne var |
 |---|---|
@@ -87,11 +87,11 @@ mavi = boşta, yeşil = dinliyor, mor = düşünüyor, turkuaz = konuşuyor, kı
 - İnternet (telefon hotspot'u) koparsa panelde **İnternet yok** yazar, robot kapanmaz; internet gelince kendiliğinden devam eder. Bağlantı kontrolü 2 dakikada bir yapılır, kotayı yemez.
 - Panel ve `baslat.bat` aynı anda açılmaz (ikisi de robota bağlanmaya çalışır). Birini kullan.
 - Eski `otomatik_baslat_kur.bat` ile kurduysan, panelde otomatik başlatmayı açınca eskisini kaldırmayı sorar.
-- Panel hiç açılmazsa `pc_app\panel_hata.txt` dosyasına bak.
+- Panel hiç açılmazsa `pc_panel\panel_hata.txt` dosyasına bak.
 
 ---
 
-## Ayarlar (pc_app/config.yaml)
+## Ayarlar (pc_panel/config.yaml)
 
 Not Defteri ile aç, değiştir, programı yeniden başlat. (Karakter, model, ses ve ses seviyesi panelden de değişir.)
 
@@ -110,7 +110,7 @@ Not Defteri ile aç, değiştir, programı yeniden başlat. (Karakter, model, se
 | `tracking.kp`, `deadband_deg` | Takip hızı / titreme önleme |
 | `serial.port`, `camera.index` | Otomatik bulamazsa elle yaz (`COM5`, `1` gibi) |
 
-Robot "bunu unutma" dediğin şeyleri `pc_app/notlar.txt` dosyasına yazar; her konuşmada hatırlar. Sohbet hafızası son 8 konuşmadır.
+Robot "bunu unutma" dediğin şeyleri `pc_panel/notlar.txt` dosyasına yazar; her konuşmada hatırlar. Sohbet hafızası son 8 konuşmadır.
 
 ---
 
@@ -129,9 +129,9 @@ Robot "bunu unutma" dediğin şeyleri `pc_app/notlar.txt` dosyasına yazar; her 
 | Cevap yok, "401" hatası | API anahtarı yanlış ya da `setx` sonrası pencere yeniden açılmadı. |
 | "429" ya da kredi hatası | console.x.ai'den bakiye yükle. |
 | Robot hoparlöründen ses cızırtılı | `voice.output: pc` yapıp PC hoparlörünü dene; amfi kablolarını (GPIO25 → PAM8403 L-IN, GND → ⊥, VIN → 5V+) kontrol et. Ses bozuk/çok yüksekse firmware'de `DAC_SWING` değerini düşür (doğrudan bağlantıda 48, 10k/2,2k bölücüyle 120). |
-| Paket kurulumu bozuldu | `pc_app\.venv` klasörünü sil, `baslat.bat`'ı yeniden çalıştır. |
+| Paket kurulumu bozuldu | `pc_panel\.venv` klasörünü sil, `baslat.bat`'ı yeniden çalıştır. |
 
-Kayıtlar `pc_app/robot.log` dosyasına da yazılır.
+Kayıtlar `pc_panel/robot.log` dosyasına da yazılır.
 
 ---
 
@@ -150,4 +150,4 @@ Para harcamamak için: `tts_engine: edge` (ücretsiz ses), `only_when_face_visib
 ## Seri protokol (meraklısına)
 
 PC ile ESP32 arasında 921600 baud, satır tabanlı komutlar: `PAN:-30`, `PANSPEED:90`, `EYES:happy`, `LOOK:40,0`, `LED:0,60,160,12`, `VOL:60`, `BEEP:880,200`, `AUDIO_STOP`, `STATUS`, `PING`.
-Ses: `AUDIO:<bayt>:<toplam>` satırından sonra ham 16 kHz 16 bit mono PCM gelir; ESP32 her paketten sonra `A:<boş tampon>` cevabı verir, PC buna göre hız ayarlar (ses 32 KB/sn, hat ~92 KB/sn). Ayrıntılar `desk_robot_fw.ino` başındaki açıklamada.
+Ses: `AUDIO:<bayt>:<toplam>` satırından sonra ham 16 kHz 16 bit mono PCM gelir; ESP32 her paketten sonra `A:<boş tampon>` cevabı verir, PC buna göre hız ayarlar (ses 32 KB/sn, hat ~92 KB/sn). Ayrıntılar `robot_kodu.ino` başındaki açıklamada.

@@ -8,7 +8,7 @@ config_local.yaml
 *.key
 
 # Robotun hafızası / kişisel notları
-software/pc_app/notlar.txt
+yazilim/pc_panel/notlar.txt
 notlar.txt
 *.memory.json
 memory*.json
